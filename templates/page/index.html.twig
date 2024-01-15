@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paris{% endblock %}
+
+{% block body %}
+
+
+    <div class="container-fluid vh-100 bg-body-tertiary">
+        <div class="flex justify-content-center align-items-center pt-5">
+            <div class="card col-4 text-center rounded-4 shadow-lg p-4 d-flex align-items-center justify-content-center">
+                <img src={{ asset('/images/default-1.jpg') }}
+                width="200" 
+                class="border-2 border-light rounded-circle shadow"
+                alt="">
+                <h1>Paris</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, in voluptatum enim asperiores officia, sed debitis, impedit tempore alias hic ipsa soluta repudiandae animi quisquam? Dignissimos totam consequatur odio nostrum?</p>
+                <p>&copy; {{ 'now'|date('Y') }}</p>
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock %}

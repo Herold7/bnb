@@ -1,3 +1,28 @@
-body {
-    background-color: skyblue;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'libre Franklin', sans-serif;
+    font-weight: 700;
+}
+
+body{
+    font-family: 'poppins', sans-serif;
+    font-weight: 300;
+}
+img{
+    transition: all 700ms ease-in;
+    -webkit-transition: all 700ms ease-in;
+    -moz-transition: all 700ms ease-in;
+    -ms-transition: all 700ms ease-in;
+    -o-transition: all 700ms ease-in;
+}
+img:hover{
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -ms-transform: scale(.9);
+    -o-transform: scale(.9);
+    transition: all 700ms ease-out;
+    -webkit-transition: all 700ms ease-out;
+    -moz-transition: all 700ms ease-out;
+    -ms-transition: all 700ms ease-out;
+    -o-transition: all 700ms ease-out;
 }
