@@ -1,28 +1,85 @@
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'libre Franklin', sans-serif;
-    font-weight: 700;
+/* Variables */
+:root {
+    --custom-main: #FE1F60;
+    --custom-secondary: #831ef8;
+    --custom-dark: #101010;
 }
 
-body{
-    font-family: 'poppins', sans-serif;
+/* ReCustom from bootstrap */
+.btn-custom {
+    background-color: var(--custom-main);
+    color: #fff;
+}
+.btn-custom:hover, .btn-custom:focus, .btn-custom:active {
+    background-color: var(--custom-secondary);
+    color: #fff;
+}
+.bg-dark {
+    background-color: var(--custom-dark) !important;
+}
+.text-main {
+    color: var(--custom-main) !important;
+}
+
+/* Titles & Fonts */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 900;
+}
+body {
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }
-img{
-    transition: all 700ms ease-in;
-    -webkit-transition: all 700ms ease-in;
-    -moz-transition: all 700ms ease-in;
-    -ms-transition: all 700ms ease-in;
-    -o-transition: all 700ms ease-in;
+
+/* City landing page */
+.paris {
+    background-image: url('/images/paris.jpg');
 }
-img:hover{
-    transform: scale(.9);
-    -webkit-transform: scale(.9);
-    -moz-transform: scale(.9);
-    -ms-transform: scale(.9);
-    -o-transform: scale(.9);
-    transition: all 700ms ease-out;
-    -webkit-transition: all 700ms ease-out;
-    -moz-transition: all 700ms ease-out;
-    -ms-transition: all 700ms ease-out;
-    -o-transition: all 700ms ease-out;
+.kyoto {
+    background-image: url('/images/kyoto.jpg');
+}
+.lasvegas {
+    background-image: url('/images/las-vegas.jpg');
+}
+.sydney {
+    background-image: url('/images/sydney.jpg');
+}
+.hongkong {
+    background-image: url('/images/hong-kong.jpg');
+}
+.paris, .kyoto, .lasvegas, .sydney, .hongkong {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Title & Subtitle */
+.title, .subtitle {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 8vw;
+    line-height: 1;
+    font-weight: 900;
+}
+.subtitle {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: .25vw;
+    -webkit-text-stroke-color: #fff;
+    transform: rotate(-180deg);
+}
+.subtitle-reverse {
+    transform: inherit;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 2rem;
+}
+
+/* Room Card */
+.img-overlay{
+    background-color: rgba(25, 25, 25, .4);
+}
+.card-host-info img {
+    width: 32px;
 }
