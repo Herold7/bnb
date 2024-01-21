@@ -50,11 +50,16 @@ class Room
     #[ORM\ManyToMany(targetEntity: Equipment::class, mappedBy: 'rooms')]
     private Collection $equipment;
 
+    #[ORM\ManyToMany(targetEntity: Favorite::class, mappedBy: 'rooms')]
+    private Collection $favorites;
+
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->bookings = new ArrayCollection();
         $this->equipment = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,6 +245,33 @@ class Room
     {
         if ($this->equipment->removeElement($equipment)) {
             $equipment->removeRoom($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Favorite>
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(Favorite $favorite): static
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites->add($favorite);
+            $favorite->addRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Favorite $favorite): static
+    {
+        if ($this->favorites->removeElement($favorite)) {
+            $favorite->removeRoom($this);
         }
 
         return $this;
