@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paris{% endblock %}
+
+{% block body %}
+<div class="vh-100 {{ background }} text-center d-flex flex-column justify-content-center">
+		<p class="title text-white fw-bolder">
+			{{ title }}
+		</p>
+		<p class="subtitle text-white fw-bolder {{ background == 'kyoto' or background == 'hongkong' ? 'subtitle-reverse' : '' }}">
+			{{ background == 'kyoto' or background == 'hongkong' ? subtitle : title }}
+		</p>
+		<div>
+			<a class="btn btn-custom btn-lg mt-5 rounded-pill" href="">Discover</a>
+		</div>
+	</div>
+{% endblock %}
