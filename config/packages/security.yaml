@@ -9,6 +9,11 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+
+    role_hierarchy:
+        ROLE_HOST:       [ROLE_USER]
+        ROLE_ADMIN:      [ROLE_HOST]
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -20,7 +25,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_login
 
             remember_me:
                 secret: '%kernel.secret%'
@@ -38,7 +43,9 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # - { path: ^/login, roles: PUBLIC_ACCESS }
+        # - { path: ^/register, roles: ROLE_USER }
+        # - { path: ^/r/, roles: ROLE_USER }
 
 when@test:
     security:
