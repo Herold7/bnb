@@ -16,7 +16,7 @@ class RoomController extends AbstractController
     public function index(
         RoomRepository $roomRepository,
         PaginatorInterface $paginator,
-        Request $request
+        Request $request,
     ): Response
     {
         $pagination = $paginator->paginate(

@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     #[Route('/', name: 'paris', methods: ['GET'])]
-    public function index(): Response
+    public function paris(): Response
     {
-        return $this->render('page/index.html.twig', [
+        return $this->render('page/city.html.twig', [
             'title' => 'Paris',
             'background' => 'paris',
         ]);
@@ -44,6 +44,7 @@ class PageController extends AbstractController
             'background' => 'sydney',
         ]);
     }
+
     #[Route('/hongkong', name: 'hongkong', methods: ['GET'])]
     public function hongkong(): Response
     {
@@ -53,5 +54,13 @@ class PageController extends AbstractController
             'background' => 'hongkong',
         ]);
     }
-}
 
+    // Test route for designing the confirmation email
+    #[Route('/email', name: 'email', methods: ['GET'])]
+    public function email(): Response
+    {
+        return $this->render('registration/confirmation_email.html.twig', [
+            "signedUrl" => "https://example.com/signed-url",
+        ]);
+    }
+}
