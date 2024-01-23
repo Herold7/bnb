@@ -28,12 +28,16 @@
 	</div>
 	{# Host more infos #}
 	<div>
+    {% if is {{ is_granted('ROLE_HOST') }} %}
+        TODO
+        {% else %}
 		<p class="fw-bold mt-3 mb-1 text-dark">{{ item.title|slice(0,30) }}...</p>
 		<p class="text-dark mb-1">start from
 			<span class="fw-bold">{{ item.price }}€</span>
 			per night</p>
-		<p class="text-dark">Manage your room
+		<p class="text-dark">Details
 			<i class="bi bi-arrow-right"></i>
 		</p>
+    {% endif %}
 	</div>
 </div>
