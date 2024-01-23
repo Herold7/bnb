@@ -89,6 +89,6 @@ footer {
     --bs-pagination-border-width: 0;
 }
 
-.active > .page-link, .page-link.active {
-    background-color: var(--custom-dark)
+.active>.page-link, .page-link.active {
+    background-color: var(--custom-dark);
 }

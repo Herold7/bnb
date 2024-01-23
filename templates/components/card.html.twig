@@ -1,0 +1,39 @@
+<div class="col-md-4 col-sm-6 mb-5 text-decoration-none">
+	<div class="position-relative">
+		<div
+			class="img-overlay p-2 position-absolute h-100 w-100 d-flex flex-column justify-content-between rounded-4">
+			{# Form favorite #}
+			<form action="{{ path('check_favorite') }}" method="post" class="w-100 text-end">
+				<input
+				type="hidden" name="room" value={{ item.id }}>
+				{# TODO: Conditional input:hidden for add or remove favorite #}
+				{% set favHeart = '<i class="bi bi-heart text-white"></i>' %}
+				{% for fav in item.favorites %}
+					{% if fav.traveler == app.user %}
+						{% set favHeart = '<i class="bi bi-heart-fill text-danger"></i>' %}
+						<input type="hidden" name="status" value="true">
+					{% endif %}
+				{% endfor %}
+				<button type="submit" class="bg-transparent rounded-pill border-0 bg-light">
+					{{ favHeart|raw }}
+				</button>
+			</form>
+			{# Host info : img + firstname #}
+			<div class="card-host-info d-flex gap-2 align-items-center">
+				<img src={{ item.host.image }} alt="{{ item.host.firstname }} {{item.host.lastname }}" class="rounded-pill">
+				<p class="text-white m-0">{{ item.host.firstname }}</p>
+			</div>
+		</div>
+		<img src="{{ item.cover }}" class="img-fluid rounded-4" alt="{{ item.title }}">
+	</div>
+	{# Host more infos #}
+	<div>
+		<p class="fw-bold mt-3 mb-1 text-dark">{{ item.title|slice(0,30) }}...</p>
+		<p class="text-dark mb-1">start from
+			<span class="fw-bold">{{ item.price }}€</span>
+			per night</p>
+		<p class="text-dark">Manage your room
+			<i class="bi bi-arrow-right"></i>
+		</p>
+	</div>
+</div>
