@@ -23,8 +23,8 @@
 
 /* Titles & Fonts */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Libre Franklin', sans-serif;
-  font-weight: 900;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 900;
 }
 body {
     font-family: 'Poppins', sans-serif;
@@ -82,4 +82,13 @@ footer {
 }
 .card-host-info img {
     width: 32px;
+}
+
+/* Pagination */
+.pagination{
+    --bs-pagination-border-width: 0;
+}
+
+.active > .page-link, .page-link.active {
+    background-color: var(--custom-dark)
 }
