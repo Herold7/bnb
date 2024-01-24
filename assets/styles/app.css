@@ -92,3 +92,9 @@ footer {
 .active>.page-link, .page-link.active {
     background-color: var(--custom-dark);
 }
+
+/* Account page */
+.bnb-height {
+    max-height: 350px;
+
+}

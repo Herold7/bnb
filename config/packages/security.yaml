@@ -44,8 +44,9 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/login, roles: PUBLIC_ACCESS }
-        # - { path: ^/register, roles: ROLE_USER }
+        # - { path: ^/register, roles: PUBLIC_ACCESS }
         # - { path: ^/r/, roles: ROLE_USER }
+        - { path: ^/account, roles: ROLE_USER } # Block access to account page if not logged in
 
 when@test:
     security:
