@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Complete your profile</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@900&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+		<link rel="stylesheet" href="">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+	</head>
+	<body class="bg-body-tertiary">
+		<div class="vh-100 d-flex flex-column align-items-center justify-content-center">
+			<img src="{{asset('/images/icon.svg')}}" alt="BnB logo" width="200">
+			<h1 class="text-center my-4">Complete your profile</h1>
+			<p>
+				Just a few more steps to complete your profile and start using BnB.
+			</p>
+			{{ form_start(form, {
+				'attr': {
+					'class': 'col-md-6 col-sm-10'}
+				}
+			) }}
+			{{ form_errors(form) }}
+			<div class="form-floating mb-2">
+				{{ form_widget(form.roles, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.roles
+						}) }}
+				<label for="floatingInput">What kind of user are you?</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.firstname, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.firstname
+						}) }}
+				<label for="floatingInput">Your firstname</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.lastname, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.lastname
+						}) }}
+				<label for="floatingInput">Your lastname</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.birthyear, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.birthyear
+						}) }}
+				<label for="floatingInput">Your birth Year</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.address, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.address
+						}) }}
+				<label for="floatingInput">Your billing address</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.city, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.city
+						}) }}
+				<label for="floatingInput">Your city</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.country, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.country
+						}) }}
+				<label for="floatingInput">Your country</label>
+			</div>
+			<div class="form-floating mb-2">
+				{{ form_widget(form.job, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.job
+						}) }}
+				<label for="floatingInput">Your job</label>
+			</div>
+			<div class="input-group mb-2">
+				{{ form_widget(form.image, {
+							attr: {
+								class: 'form-control',
+							},
+							'value': app.user.image
+						}) }}
+				<label class="input-group-text">
+					<i class="bi bi-file-image"></i>
+				</label>
+			</div>
+			<button type="submit" class="mt-2 btn btn-dark btn-lg rounded-pill">
+				Save
+			</button>
+			{{ form_end(form) }}
+		</div>
+		{{ dump(app.user) }}</body>
+</html></body></html>
