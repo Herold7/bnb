@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ProfileType;
+use App\Service\ProfileService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends AbstractController
 {
@@ -44,7 +48,6 @@ class PageController extends AbstractController
             'background' => 'sydney',
         ]);
     }
-
     #[Route('/hongkong', name: 'hongkong', methods: ['GET'])]
     public function hongkong(): Response
     {
@@ -52,15 +55,6 @@ class PageController extends AbstractController
             'title' => 'Hong Kong',
             'subtitle' => '香港',
             'background' => 'hongkong',
-        ]);
-    }
-
-    // Test route for designing the confirmation email
-    #[Route('/email', name: 'email', methods: ['GET'])]
-    public function email(): Response
-    {
-        return $this->render('registration/confirmation_email.html.twig', [
-            "signedUrl" => "https://example.com/signed-url",
         ]);
     }
 }
