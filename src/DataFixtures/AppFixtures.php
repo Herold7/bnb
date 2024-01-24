@@ -58,63 +58,64 @@ class AppFixtures extends Fixture
             array_push($equipmentArray, $equipment);
         }
 
-        // Set rooms
-        $cities = ['paris', 'las vegas', 'kyoto', 'sydney', 'hong kong'];
-        for ($i = 0; $i < 100; $i++) {
+        // // Set rooms
+        // $cities = ['paris', 'las vegas', 'kyoto', 'sydney', 'hong kong'];
+        // for ($i = 0; $i < 100; $i++) {
 
-            $room = new Room();
-            $room->setTitle($faker->text(50))
-                ->setCity($faker->randomElement($cities))
-                ->addEquipment($faker->randomElement($equipmentArray))
-                ->addEquipment($faker->randomElement($equipmentArray))
-                ->setDescription($faker->paragraphs(3, true))
-                ->setHost($faker->randomElement($hosts))
-                ->setPrice($faker->numberBetween(150, 1500));
+        //     $room = new Room();
+        //     $room->setTitle($faker->text(50))
+        //         ->setCity($faker->randomElement($cities))
+        //         ->addEquipment($faker->randomElement($equipmentArray))
+        //         ->addEquipment($faker->randomElement($equipmentArray))
+        //         ->setDescription($faker->paragraphs(3, true))
+        //         ->setHost($faker->randomElement($hosts))
+        //         ->setPrice($faker->numberBetween(150, 1500));
 
-            // Add favorites to admin
-            if ($i < 10) {
-                $favorite = new Favorite();
-                $favorite->setTraveler($admin)
-                    ->addRoom($room);
-                $manager->persist($favorite);
-            }
+        //     // Add favorites to admin
+        //     if ($i < 10) {
+        //         $favorite = new Favorite();
+        //         $favorite->setTraveler($admin)
+        //             ->addRoom($room);
+        //         $manager->persist($favorite);
+        //     }
 
-            // Set users with favorites
-            if ($i > 70) {                
-                $user = new User();
-                $user->setEmail('user' . $i . '@user.fr')
-                    ->setRoles(['ROLE_USER'])
-                    ->setFirstname($faker->firstName)
-                    ->setLastname($faker->lastName)
-                    ->setBirthyear($faker->numberBetween(1980, 2000))
-                    ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-                    ->setImage(rand(0,1) ? '/images/default-1.jpg' : '/images/default-2.jpg')
-                    ->setAddress($faker->address)
-                    ->setCity($faker->city)
-                    ->setCountry($faker->country);
-                $manager->persist($user);
 
-                // Add favorites to users
-                $favorite = new Favorite();
-                $favorite->setTraveler($user)
-                    ->addRoom($room);
-                $manager->persist($favorite);
+        //     // Set users with favorites
+        //     if ($i > 70) {                
+        //         $user = new User();
+        //         $user->setEmail('user' . $i . '@user.fr')
+        //             ->setRoles(['ROLE_USER'])
+        //             ->setFirstname($faker->firstName)
+        //             ->setLastname($faker->lastName)
+        //             ->setBirthyear($faker->numberBetween(1980, 2000))
+        //             ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
+        //             ->setImage(rand(0,1) ? '/images/default-1.jpg' : '/images/default-2.jpg')
+        //             ->setAddress($faker->address)
+        //             ->setCity($faker->city)
+        //             ->setCountry($faker->country);
+        //         $manager->persist($user);
 
-                // Set Reviews
-                $review = new Review();
-                $reviewDate = $faker->dateTimeBetween('-4 months');
-                $review->setRating(mt_rand(1, 5))
-                    ->setTitle($faker->word(3, true))
-                    ->setComment($faker->text(255))
-                    ->setTraveler($user)
-                    ->setRooms($room)
-                    ->setRating($faker->numberBetween(1, 5))
-                    ->setCreatedAt($reviewDate);
+        //         // Add favorites to users
+        //         $favorite = new Favorite();
+        //         $favorite->setTraveler($user)
+        //             ->addRoom($room);
+        //         $manager->persist($favorite);
 
-                $manager->persist($review);
-            }
-            $manager->persist($room);
-        }
+        //         // Set Reviews
+        //         $review = new Review();
+        //         $reviewDate = $faker->dateTimeBetween('-4 months');
+        //         $review->setRating(mt_rand(1, 5))
+        //             ->setTitle($faker->word(3, true))
+        //             ->setComment($faker->text(255))
+        //             ->setTraveler($user)
+        //             ->setRooms($room)
+        //             ->setRating($faker->numberBetween(1, 5))
+        //             ->setCreatedAt($reviewDate);
+
+        //         $manager->persist($review);
+        //     }
+        //     $manager->persist($room);
+        // }
 
         // Flush
         $manager->flush();
