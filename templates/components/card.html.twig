@@ -1,23 +1,22 @@
 <div class="col-md-4 col-sm-6 mb-5 text-decoration-none">
 	<div class="position-relative">
-		<div
-			class="img-overlay p-2 position-absolute h-100 w-100 d-flex flex-column justify-content-between rounded-4">
-			{# Form favorite #}
-			<form action="{{ path('check_favorite') }}" method="post" class="w-100 text-end">
-				<input
-				type="hidden" name="room" value={{ item.id }}>
-				{# TODO: Conditional input:hidden for add or remove favorite #}
-				{% set favHeart = '<i class="bi bi-heart text-white"></i>' %}
-				{% for fav in item.favorites %}
-					{% if fav.traveler == app.user %}
-						{% set favHeart = '<i class="bi bi-heart-fill text-danger"></i>' %}
-						<input type="hidden" name="status" value="true">
-					{% endif %}
-				{% endfor %}
-				<button type="submit" class="bg-transparent rounded-pill border-0 bg-light">
-					{{ favHeart|raw }}
-				</button>
-			</form>
+		<div class="img-overlay p-2 position-absolute h-100 w-100 d-flex flex-column justify-content-between rounded-4">
+			{# Check favorite #}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}	
+				{% if item.isFavorite(app.user) %}
+					<a class="text-end" href={{ path('remove_favorite', { room: item.id }) }}>
+						<i class="bi bi-heart-fill text-danger"></i>
+					</a>
+				{% else %}
+					<a class="text-end" href={{ path('add_favorite', { room: item.id }) }}>
+						<i class="bi bi-heart text-white"></i>
+					</a>
+				{% endif %}
+			{% else %}
+					<a class="text-end" href={{ path('add_favorite', { room: item.id }) }}>
+						<i class="bi bi-heart text-white"></i>
+					</a>
+			{% endif %}
 			{# Host info : img + firstname #}
 			<div class="card-host-info d-flex gap-2 align-items-center">
 				<img src={{ item.host.image }} alt="{{ item.host.firstname }} {{item.host.lastname }}" class="rounded-pill">
@@ -28,16 +27,16 @@
 	</div>
 	{# Host more infos #}
 	<div>
-    {% if is_granted('ROLE_HOST') %}
-        TODO
-        
-		<p class="fw-bold mt-3 mb-1 text-dark">{{ item.title|slice(0,30) }}...</p>
-		<p class="text-dark mb-1">start from
-			<span class="fw-bold">{{ item.price }}€</span>
-			per night</p>
-		<p class="text-dark">Details
-			<i class="bi bi-arrow-right"></i>
-		</p>
-    {% endif %}
+	{% if is_granted('ROLE_HOST') %}
+		TODO
+		{% else %}
+			<p class="fw-bold mt-3 mb-1 text-dark">{{ item.title|slice(0,30) }}...</p>
+			<p class="text-dark mb-1">start from
+				<span class="fw-bold">{{ item.price }}€</span>
+				per night</p>
+			<p class="text-dark">Details
+				<i class="bi bi-arrow-right"></i>
+			</p>
+	{% endif %}
 	</div>
 </div>

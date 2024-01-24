@@ -304,4 +304,17 @@ class Room
 
         return $this;
     }
+
+    // Check if the room is already in the user's favorites
+    public function isFavorite(User $user): bool
+    {
+        foreach ($this->favorites as $favorite) {
+            if ($favorite->getTraveler() === $user) {
+                return true;
+            }
+        }
+
+        return false;
+        // return $this->favorites->exists(fn (int $key, Favorite $favorite) => $favorite->getTraveler() === $user);
+    }
 }

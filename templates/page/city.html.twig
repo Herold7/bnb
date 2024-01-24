@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	{{ title }}
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <div class="d-flex flex-column justify-content-center vh-100 text-center {{ background }}">
-        <p class="title text-white text-uppercase fw-bolder">{{ title }}</p>
-        <p class="subtitle text-white text-uppercase fw-bolder {{ background == 'kyoto' or background == 'hongkong' ? 'subtitle-reverse' : title }}">
-            {{ background == 'kyoto' or background == 'hongkong' ? subtitle : title }}
-        </p>
-        <a href="" class="btn btn-custom btn-lg rounded-pill align-self-center mt-5 px-5">Discover</a>
-    </div
+	<div class="vh-100 {{ background }} text-center d-flex flex-column justify-content-center">
+		<p class="title text-white fw-bolder">
+			{{ title }}
+		</p>
+		<p class="subtitle text-white fw-bolder {{ background == 'kyoto' or background == 'hongkong' ? 'subtitle-reverse' : '' }}">
+			{{ background == 'kyoto' or background == 'hongkong' ? subtitle : title }}
+		</p>
+		<div>
+			<a href={{ path('app_room_city', { city: city}) }} class="btn btn-custom btn-lg mt-5 rounded-pill">Discover</a>
+		</div>
+	</div>
 {% endblock %}

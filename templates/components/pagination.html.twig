@@ -1,32 +1,25 @@
-{#
-/**
- * @file
- * Twitter Bootstrap v4 Sliding pagination control implementation.
- *
- * View that can be used with the pagination module
- * from the Twitter Bootstrap CSS Toolkit
- * https://getbootstrap.com/docs/4.5/components/pagination/
- *
- */
-#}
 {% if pageCount > 1 %}
     <nav>
         {% set classAlign = (align is not defined) ? '' : align=='center' ? ' justify-content-center' : (align=='right' ? ' justify-content-end' : '') %}
         {% set classSize = (size is not defined) ? '' : size=='large' ? ' pagination-lg' : (size=='small' ? ' pagination-sm' : '') %}
-        <ul class="pagination{{ classAlign }}{{ classSize }}">
-{# The previous part befor paginate #}
+        <ul class="pagination{{ classAlign }}{{ classSize }} text-dark">
+
+            {# The previous part before paginate #}
             {% if previous is defined %}
                 <li class="page-item">
-                    <a class="page-link text-dark" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><i class="bi bi-arrow-left"></i></a>
+                    <a class="page-link text-dark" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
                 </li>
             {% else %}
                 <li class="page-item disabled">
-                    <span class="page-link text-dark"><i class="bi bi-arrow-left"></i></span>
+                    <span class="page-link text-dark">
+                        <i class="bi bi-arrow-left"></i>
+                    </span>
                 </li>
             {% endif %}
 
-{# The paginate par  #}
-
+            {# The paginate part #}
             {% if startPage > 1 %}
                 <li class="page-item">
                     <a class="page-link text-dark" href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
@@ -35,10 +28,7 @@
                     <li class="page-item">
                         <a class="page-link text-dark" href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
                     </li>
-                {% elseif startPage != 2 %}
-                    <li class="page-item disabled">
-                        <span class="page-link text-dark">&hellip;</span>
-                    </li>
+
                 {% endif %}
             {% endif %}
 
@@ -71,14 +61,18 @@
                     <a class="page-link text-dark" href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
                 </li>
             {% endif %}
-{# The next part after paginate #}
+
             {% if next is defined %}
                 <li class="page-item">
-                    <a class="page-link text-dark" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}"><i class="bi bi-arrow-right"></i></a>
+                    <a class="page-link text-dark" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
                 </li>
             {% else %}
                 <li  class="page-item disabled">
-                    <span class="page-link text-dark"><i class="bi bi-arrow-right"></i></span>
+                    <span class="page-link text-dark">
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
                 </li>
             {% endif %}
         </ul>

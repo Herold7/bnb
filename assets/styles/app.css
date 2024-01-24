@@ -10,22 +10,33 @@
     background-color: var(--custom-main);
     color: #fff;
 }
-.btn-custom:hover, .btn-custom:focus, .btn-custom:active {
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active {
     background-color: var(--custom-secondary);
     color: #fff;
 }
+
 .bg-dark {
     background-color: var(--custom-dark) !important;
 }
+
 .text-main {
     color: var(--custom-main) !important;
 }
 
 /* Titles & Fonts */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Libre Franklin', sans-serif;
     font-weight: 900;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -35,37 +46,49 @@ body {
 .paris {
     background-image: url('/images/paris.jpg');
 }
+
 .kyoto {
     background-image: url('/images/kyoto.jpg');
 }
+
 .lasvegas {
     background-image: url('/images/las-vegas.jpg');
 }
+
 .sydney {
     background-image: url('/images/sydney.jpg');
 }
+
 .hongkong {
     background-image: url('/images/hong-kong.jpg');
 }
-.paris, .kyoto, .lasvegas, .sydney, .hongkong {
+
+.paris,
+.kyoto,
+.lasvegas,
+.sydney,
+.hongkong {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 /* Title & Subtitle */
-.title, .subtitle {
+.title,
+.subtitle {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 8vw;
     line-height: 1;
     font-weight: 900;
 }
+
 .subtitle {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: .25vw;
     -webkit-text-stroke-color: #fff;
     transform: rotate(-180deg);
 }
+
 .subtitle-reverse {
     transform: inherit;
 }
@@ -77,24 +100,26 @@ footer {
 }
 
 /* Room Card */
-.img-overlay{
+.img-overlay {
     background-color: rgba(25, 25, 25, .4);
 }
+
 .card-host-info img {
     width: 32px;
 }
 
 /* Pagination */
-.pagination{
+.pagination {
     --bs-pagination-border-width: 0;
 }
 
-.active>.page-link, .page-link.active {
+.active>.page-link,
+.page-link.active {
     background-color: var(--custom-dark);
 }
 
 /* Account page */
 .bnb-height {
-    max-height: 350px;
+    max-height: 400px;
 
 }

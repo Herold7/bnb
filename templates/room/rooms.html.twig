@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}What is your next sweet home?
+{% endblock %}
+
+{% block body %}
+	<div class="p-5 mb-4 border-bottom border-2">
+		<h1 class="">What is your next sweet home?</h1>
+	</div>
+
+	{% for item in app.user.favorites %}
+		{{ dump(item) }}
+	{% endfor %}
+
+
+	<div class="container">
+		<div class="row">
+			{% for item in rooms %}
+				{{ include('components/card.html.twig') }}
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-center my-5">
+		{{ knp_pagination_render(rooms) }}
+	</div>
+
+{% endblock %}

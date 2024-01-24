@@ -3,47 +3,62 @@
 namespace App\Controller;
 
 use App\Entity\Favorite;
+use App\Entity\Room;
 use App\Repository\FavoriteRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FavoriteController extends AbstractController
 {
-    #[Route('/check-favorite', name: 'check_favorite', methods: ['POST'])]
-    public function index(
-        EntityManagerInterface $em,
+    #[Route('/add-favorite/{room}', name: 'add_favorite', methods: ['GET'])]
+    public function addFavorite(
+        Room $room, 
+        EntityManagerInterface $em
+        ): Response
+    {
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $newFavorite = new Favorite();
+        $newFavorite->setTraveler($user);
+        $newFavorite->addRoom($room);
+
+        $user->addFavorite($newFavorite);
+        $em->persist($newFavorite);
+        $em->flush();
+
+        $this->addFlash('success', 'Room added to favorites successfully.');
+        return $this->redirectToRoute('app_room');
+    }
+
+    #[Route('/remove-favorite/{room}', name: 'remove_favorite', methods: ['GET'])]
+    public function removeFavorite(
         FavoriteRepository $favoriteRepository,
-        Request $request
+        EntityManagerInterface $em
     ): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
-        // Get the form data & user
-        // $roomNumber;
-        // $status;
-        if ($request->request->get('room')) {
-        $roomNumber = $request->request->get('room');
-            if ($request->request->get('room')) {
-                $status = $request->request->get('stauts');
-            }
-            if ($status == 'true') {
-                // Remove from favorite with object
-            } else {
-                // Add to favorite with object
-            }
 
-            // Persist changes
-            // $em->persist($favorite);
-            // $em->flush();
+        $user = $this->getUser();
+
+        $favorite = $favoriteRepository->findOneBy([
+            'traveler' => $user
+        ]);
+
+        if ($favorite) {
+            $user->removeFavorite($favorite);
+            $em->remove($favorite);
+            $em->flush();
+            $this->addFlash('success', 'Room removed from favorites successfully.');
         }
-        
-        // Persist changes
-        // Flash message to confirm the action
-        // Redirect to the room page after checking the favorite
+
         return $this->redirectToRoute('app_room');
     }
 }

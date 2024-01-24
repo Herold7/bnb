@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 #[Route('/r')] // prefix all room routes with /r
 class RoomController extends AbstractController
 {
-    #[Route('/', name: 'app_room')]
+    #[Route('/', name: 'app_room', methods: ['GET'])]
     public function index(
         RoomRepository $roomRepository,
         PaginatorInterface $paginator,
@@ -30,6 +30,24 @@ class RoomController extends AbstractController
             'hostRooms' => $roomRepository->findBy(
                 ['host' => $this->getUser()]
                 )
+        ]);
+    }
+
+    #[Route('/{city}', name: 'app_room_city', methods: ['GET'])]
+    public function city(
+        RoomRepository $roomRepository,
+        PaginatorInterface $paginator,
+        Request $request,
+    ): Response
+    {
+        $pagination = $paginator->paginate(
+            $roomRepository->findBy(['city' => $request->attributes->get('city')]),
+            $request->query->getInt('page', 1),
+            12
+        );
+
+        return $this->render('room/rooms.html.twig', [
+            'rooms' => $pagination,
         ]);
     }
 }

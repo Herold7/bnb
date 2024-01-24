@@ -33,12 +33,12 @@ class Booking
     #[ORM\JoinColumn(nullable: false)]
     private ?User $traveler = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Review $review = null;
+
     #[ORM\ManyToOne(inversedBy: 'bookings')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Room $room = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Review $review = null;
 
     public function getId(): ?int
     {
@@ -117,18 +117,6 @@ class Booking
         return $this;
     }
 
-    public function getRoom(): ?Room
-    {
-        return $this->room;
-    }
-
-    public function setRoom(?Room $room): static
-    {
-        $this->room = $room;
-
-        return $this;
-    }
-
     public function getReview(): ?Review
     {
         return $this->review;
@@ -137,6 +125,18 @@ class Booking
     public function setReview(?Review $review): static
     {
         $this->review = $review;
+
+        return $this;
+    }
+
+    public function getRoom(): ?Room
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?Room $room): static
+    {
+        $this->room = $room;
 
         return $this;
     }

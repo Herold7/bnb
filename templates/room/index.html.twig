@@ -18,8 +18,8 @@
 	<div class="container">
 		<div class="row">
 			{% if  is_granted('ROLE_HOST') %}
-				{% if hostRooms|length >= 0 %} <!-- A remettre > -->
-					{% for item in rooms %} <!-- A remettre hostRoom -->
+				{% if hostRooms|length > 0 %} 
+					{% for item in hostRooms %}
 						{{ include('components/card.html.twig') }}
 					{% endfor %}
 				{% else %}
