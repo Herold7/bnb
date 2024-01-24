@@ -19,11 +19,11 @@
 			{% endif %}
 			{# Host info : img + firstname #}
 			<div class="card-host-info d-flex gap-2 align-items-center">
-				<img src={{ item.host.image }} alt="{{ item.host.firstname }} {{item.host.lastname }}" class="rounded-pill">
+				<img src={{ asset('uploads/users/') }}  {{item.host.image }}" alt="{{ item.host.firstname }} {{ item.host.lastname }} class="rounded-pill">
 				<p class="text-white m-0">{{ item.host.firstname }}</p>
 			</div>
 		</div>
-		<img src="{{ item.cover }}" class="img-fluid rounded-4" alt="{{ item.title }}">
+		<img src="{{ asset('uploads/rooms/') }}{{item.cover}}" class="img-fluid rounded-4" alt="{{ item.title }}">
 	</div>
 	{# Host more infos #}
 	<div>

@@ -27,6 +27,9 @@
             </a>
 			<div class="d-flex gap-3 align-items-center">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href={{ path('admin')}} class="text-white text-decoration-none">Go to dashboard</a>
+			{% endif %}
                 <a href={{ path('account') }} class="text-white text-decoration-none">My account</a>
                 <a href={{ path('app_logout') }} class="text-white text-decoration-none">Logout</a>
                 {% else %}

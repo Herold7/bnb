@@ -63,7 +63,7 @@ class Room
     private ?int $price = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $cover = '/images/room-cover.jpg';
+    private ?string $cover = 'room-cover.jpg';
 
     #[ORM\ManyToOne(inversedBy: 'rooms')]
     #[ORM\JoinColumn(nullable: false)]

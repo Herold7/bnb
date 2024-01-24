@@ -24,10 +24,11 @@ class AppFixtures extends Fixture
             ->setFirstname('Admin')
             ->setLastname('Martin')
             ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-            ->setImage('/images/default-2.jpg')
+            ->setImage('default.png')
             ->setAddress($faker->address)
             ->setCity($faker->city)
-            ->setCountry($faker->country);
+            ->setCountry($faker->country)
+            ->setJob('Administrateur');
         $manager->persist($admin);
 
         // Set hosts
@@ -40,10 +41,11 @@ class AppFixtures extends Fixture
                 ->setLastname($faker->lastName)
                 ->setBirthyear($faker->numberBetween(1980, 2000))
                 ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-                ->setImage(rand(0,1) ? '/images/default-1.jpg' : '/images/default-2.jpg')
+                ->setImage(rand(0,1) ? 'default-1.jpg' : 'default-2.jpg')
                 ->setAddress($faker->address)
                 ->setCity($faker->city)
-                ->setCountry($faker->country);
+                ->setCountry($faker->country)
+                ->setJob($faker->jobTitle);
             $manager->persist($host);
             array_push($hosts, $host);
         }
@@ -88,10 +90,11 @@ class AppFixtures extends Fixture
                     ->setLastname($faker->lastName)
                     ->setBirthyear($faker->numberBetween(1980, 2000))
                     ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-                    ->setImage(rand(0,1) ? '/images/default-1.jpg' : '/images/default-2.jpg')
+                    ->setImage(rand(0,1) ? 'default-1.jpg' : 'default-2.jpg')
                     ->setAddress($faker->address)
                     ->setCity($faker->city)
-                    ->setCountry($faker->country);
+                    ->setCountry($faker->country)
+                    ->setJob($faker->jobTitle);
                 $manager->persist($user);
 
                 // Add favorites to users
