@@ -30,12 +30,15 @@
 				{% for item in rooms %}
 					{{ include('components/card.html.twig') }}
 				{% endfor %}
+				
+				<div class="d-flex justify-content-center my-5">
+					{{ knp_pagination_render(rooms) }}
+				</div>
 			{% endif %}
 		</div>
 	</div>
-
-	<div class="d-flex justify-content-center my-5">
-		{{ knp_pagination_render(rooms) }}
-	</div>
+	{% block footer %}
+		{% include 'components/footer-city.html.twig' %}
+	{% endblock %}
 
 {% endblock %}

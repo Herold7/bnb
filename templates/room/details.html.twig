@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}What is your next sweet home?
+{% endblock %}
+
+{% block body %}
+	<div class="p-5 mb-4 border-bottom border-2">
+		<h1 class="">
+			{{ room.title }}
+		</h1>
+	</div>
+
+	<div class="container pb-5">
+		<div class="row mb-3">
+			<img src="{{ asset('/uploads/rooms/') }}{{ room.cover }}" alt="{{ room.title }}" class="img-fluid rounded-3">
+		</div>
+		<div class="d-flex gap-2 align-items-center mb-3">
+			<div class="">
+				<img src="{{ asset('/uploads/users/') }}{{ room.host.image }}" alt="{{ room.host.fullname }}" class="img-fluid rounded-pill" width="40">
+			</div>
+			<div class="">
+				<p class="fs-3">Offer by {{ room.host.fullname }}</p>
+			</div>
+		</div>
+		<div class="mb-5">
+			<p class="fs-3">Description</p>
+			<p class="fs-5">{{ room.description }}</p>
+		</div>
+		<div class="row mb-5">
+			<div class="col-md-8 border-end">
+				<p class="fs-3">Equipments</p>
+				{% for item in room.equipment %}
+					<p class="fs-5">• {{ item.name|capitalize }}</p>
+				{% endfor %}
+			</div>
+			<div class="col-md-4">
+				<p class="fs-3">Price</p>
+				<p class="fs-5">{{ room.price }} €</p>
+				<p class="fs-6">per night</p>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="border border-2 rounded-3 p-3">
+				<p class="fs-3">Make a reservation</p>
+				<form action={{ path('book_room', { room: room.id }) }} method="post">
+					<div class="mb-3">
+						<label for="checkin" class="form-label">Check-in</label>
+						<input type="date" class="form-control" id="checkin" name="checkin" required>
+					</div>
+					<div class="mb-3">
+						<label for="checkout" class="form-label">Check-out</label>
+						<input type="date" class="form-control" id="checkout" name="checkout" required>
+					</div>
+					<div class="mb-3">
+						<label for="guests" class="form-label">Guests</label>
+						<input type="number" class="form-control" id="guests" name="guests" required>
+					</div>
+					{% if is_granted('ROLE_USER') %}
+							<button type="submit" class="btn btn-custom btn-lg rounded-pill">Book</button>
+						{% else %}
+							<a href="{{ path('app_login') }}" class="btn btn-dark btn-lg rounded-pill">Login to book</a>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+	</div>
+	{% block footer %}
+		{% include 'components/footer-city.html.twig' %}
+	{% endblock %}
+
+{% endblock %}

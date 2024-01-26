@@ -56,7 +56,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Rooms', 'fa fa-list', Room::class);
         yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
         yield MenuItem::linkToCrud('Reviews', 'fa fa-star', Review::class);
-        yield MenuItem::linkToRoute('Back to app', 'fa fa-arrow-left', 'app-room');
+        // yield MenuItem::linkToRoute('Back to app', 'fa fa-arrow-left', 'app-room');
     }
 
     // public function configureUserMenu(UserInterface $user): UserMenu
