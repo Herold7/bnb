@@ -317,4 +317,10 @@ class Room
         return false;
         // return $this->favorites->exists(fn (int $key, Favorite $favorite) => $favorite->getTraveler() === $user);
     }
+
+    // __toString() allows to use the object as a string
+    public function __toString(): string
+    {
+        return $this->title;
+    }
 }
