@@ -1,0 +1,35 @@
+<header class="d-flex justify-content-between align-items-center p-3 bg-dark">
+	<a href={{ path('paris')}}>
+		<img src={{ asset('/images/icon.svg') }} alt="logo BnB" width="60">
+	</a>
+	<div class="d-flex gap-3 align-items-center">
+		{% if is_granted('ROLE_USER') %}
+			<div class="nav-item dropdown bg-body-tertiary py-2 px-3 rounded-pill">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a class="dropdown-item" href={{ path('account') }}>My account</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href={{ path('bookings') }}>My bookings</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href={{ path('favorites') }}>My favorites</a>
+					</li>
+					{% if is_granted('ROLE_ADMIN') %}
+						<li>
+							<a class="dropdown-item" href={{ path('admin') }}>Admin dashboard</a>
+						</li>
+					{% endif %}
+					<li><hr class="dropdown-divider"></li>
+					<li>
+						<a class="dropdown-item" href={{ path('app_logout') }}>Logout</a>
+					</li>
+				</ul>
+			</div>
+		{% else %}
+			<a href={{ path('app_register') }} class="text-white text-decoration-none">Sign up</a>
+			<a href={{ path('app_login') }} class="btn btn-light rounded-pill">Login</a>
+		{% endif %}
+	</div>
+</header>
