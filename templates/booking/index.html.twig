@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}There is your bookings
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row text-center py-5">
+            <h1>My bookings</h1>
+        </div>
+        {% if bookings|length > 0 %}
+            {{ dump(bookings) }}
+            {% for item in bookings %}
+                TODO: Create a card booking component
+            {% endfor %}
+
+        {% else %}
+            <div class="text-center">
+                <p>You don't have any booking yet.</p>
+                <a href={{ path('app_room') }} class="btn btn-custom rounded-pill w-auto">Book a room</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

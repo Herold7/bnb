@@ -140,4 +140,24 @@ class Booking
 
         return $this;
     }
+
+    // Convert checkin date to string
+    public function getCheckInString(): string
+    {
+        return $this->getCheckIn()->format('d/m/Y');
+    }
+
+    // Convert checkout date to string
+    public function getCheckOutString(): string
+    {
+        return $this->getCheckOut()->format('d/m/Y');
+    }
+
+    // Get the number of days between checkin and checkout
+    public function getDays(): int
+    {
+        $diff = $this->getCheckIn()->diff($this->getCheckOut());
+        return $diff->days;
+    }
+    
 }
